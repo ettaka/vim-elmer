@@ -9,7 +9,7 @@ Plugin for adding highlighting for ElmerFEM Solver Input Files(SIF)
 
 ### Install using vundle
 
-add "Plugin 'ettaka/vim-elmer' to your .vimrc
+add "Plugin 'ettaka/vim-elmer'" to your .vimrc
 
 ### Manual install
 
