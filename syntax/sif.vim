@@ -24,7 +24,7 @@ function! ListToString(set_list)
 endfunction
 " --------}}}
 " Search for keywords -------------------------------------- {{{
-let keyword_path='/home/eelis/.vim/syntax/'
+let keyword_path=$HOME . '/' . '.vim/syntax/'
 let filecontents=readfile(keyword_path . "SOLVER.KEYWORDS")
 let sif_lists=[]
 let sif_keys=[]
