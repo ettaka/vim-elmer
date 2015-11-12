@@ -23,9 +23,29 @@ function! ListToString(set_list)
 	return string
 endfunction
 " --------}}}
+" Search for SOLVER.KEYWORDS file -------------------------------------- {{{
+let complain=0
+let filepaths=[]
+let keysfound=0
+call AddToSet(filepaths, $ELMER_HOME . '/share/elmersolver/lib/SOLVER.KEYWORDS')
+call AddToSet(filepaths, $HOME . '/.vim/syntax/SOLVER.KEYWORDS')
+call AddToSet(filepaths, $HOME . '/.vim/bundle/vim-elmer/syntax/SOLVER.KEYWORDS')
+let filecontents=[]
+for filepath in filepaths
+	if filereadable(filepath)
+		let filecontents=readfile(filepath)
+		let keysfound=1
+		break
+	endif
+endfor
+
+if !keysfound
+	echom "Warning: SOLVER.KEYWORDS not found!"
+elseif complain && !filereadable(filepaths[0])
+	echo "ELMER_HOME environment variable might not be set properly. Some keywords might be missing."
+endif
+" ------------------------}}}
 " Search for keywords -------------------------------------- {{{
-let keyword_path=$HOME . '/' . '.vim/syntax/'
-let filecontents=readfile(keyword_path . "SOLVER.KEYWORDS")
 let sif_lists=[]
 let sif_keys=[]
 let sif_types=[]
