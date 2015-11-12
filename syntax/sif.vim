@@ -5,7 +5,7 @@
 " email: eelis.takala@gmail.com 
 " 
 if exists("b:current_syntax")
-  finish
+	finish
 endif
 
 " Helper functions -------------------------{{{
@@ -94,8 +94,8 @@ call AddToSet(test_lists, 'material')
 call AddToSet(test_lists, 'body')
 call AddToSet(test_lists, 'component')
 for test_list in test_lists
-  let cmd="syntax region sifListBlock matchgroup=sifLB start='\\c". test_list . "' end='\\c\\(::\\|End\\)' fold contains=sifKeyword,sifString,sifNumber,sifType,sifFloat,sifFloatIll,sifOperator,sifBoolean"
-  execute(cmd)
+	let cmd="syntax region sifListBlock matchgroup=sifLB start='\\c". test_list . "' end='\\c\\(::\\|End\\)' fold contains=sifKeyword,sifString,sifNumber,sifType,sifFloat,sifFloatIll,sifOperator,sifBoolean"
+	execute(cmd)
 endfor
 " -----------------------------------------------------}}}
 " Highlights -------------------------------------- {{{
