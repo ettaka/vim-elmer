@@ -3,8 +3,9 @@ augroup filetype_fortran
   autocmd!
 	autocmd FileType fortran set foldmethod=syntax
   autocmd FileType fortran nnoremap <buffer> <localleader>c 0i!<esc>
-  autocmd FileType fortran nnoremap <buffer> <localleader>wf :execute(":call ElmerMethod('FUNCTION')")<cr>jf(a
-  autocmd FileType fortran nnoremap <buffer> <localleader>ws :execute(":call ElmerMethod('SUBROUTINE')")<cr>jf(a
+  autocmd FileType fortran nnoremap <buffer> <localleader>wf :execute(":call ElmerFortranRegion('FUNCTION')")<cr>jf(a
+  autocmd FileType fortran nnoremap <buffer> <localleader>ws :execute(":call ElmerFortranRegion('SUBROUTINE')")<cr>jf(a
+  autocmd FileType fortran nnoremap <buffer> <localleader>wm :execute(":call ElmerFortranRegion('MODULE')")<cr>jf(a
 	autocmd FileType fortran set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 augroup END
 " }}}
@@ -15,13 +16,17 @@ function! Add_with_lnum(lines, line)
 	return new_lines
 endfunction
 
-function! ElmerMethod(type)
+function! ElmerFortranRegion(type)
 	let name=expand(@")
 	let lines=[]
 	let decor='!-------------------------------------------------------------------'
 	
 	let lines=Add_with_lnum(lines, decor)
-	let lines=Add_with_lnum(lines, " ".a:type." ".name."()")
+	if type=='MODULE'
+	  let lines=Add_with_lnum(lines, " ".a:type." ".name)
+	else
+	  let lines=Add_with_lnum(lines, " ".a:type." ".name."()")
+	endif
 	let lines=Add_with_lnum(lines, decor)
 	let lines=Add_with_lnum(lines, " IMPLICIT NONE")
 	let lines=Add_with_lnum(lines, "")
