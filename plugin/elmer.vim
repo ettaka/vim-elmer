@@ -5,6 +5,7 @@ augroup filetype_fortran
   autocmd FileType fortran nnoremap <buffer> <localleader>c 0i!<esc>
   autocmd FileType fortran nnoremap <buffer> <localleader>wf :execute(":call ElmerMethod('FUNCTION')")<cr>jf(a
   autocmd FileType fortran nnoremap <buffer> <localleader>ws :execute(":call ElmerMethod('SUBROUTINE')")<cr>jf(a
+	autocmd FileType fortran set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 augroup END
 " }}}
 " Fortran templates ------------- {{{
