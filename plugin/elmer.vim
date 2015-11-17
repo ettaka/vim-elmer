@@ -31,7 +31,9 @@ function! ElmerMethod(type)
 
 	let lnum=line('.')
 	for [i,line] in lines
+		execute("normal! o")
 	  call setline(lnum+i, line)
 	endfor
 endfunction
 " ------------}}}
+
