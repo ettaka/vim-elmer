@@ -1,9 +1,13 @@
-augroup filetype_fortran_elmer
-	autocmd!
+" Fortran file settings ---------- {{{
+augroup filetype_fortran
+  autocmd!
+	autocmd FileType fortran set foldmethod=syntax
+  autocmd FileType fortran nnoremap <buffer> <localleader>c 0i!<esc>
   autocmd FileType fortran nnoremap <buffer> <localleader>wf :execute(":call ElmerMethod('FUNCTION')")<cr>jf(a
   autocmd FileType fortran nnoremap <buffer> <localleader>ws :execute(":call ElmerMethod('SUBROUTINE')")<cr>jf(a
 augroup END
-
+" }}}
+" Fortran templates ------------- {{{
 function! Add_with_lnum(lines, line)
 	let new_lines=a:lines
 	call add(new_lines, [len(new_lines), a:line])
@@ -29,4 +33,4 @@ function! ElmerMethod(type)
 	  call setline(lnum+i, line)
 	endfor
 endfunction
-
+" ------------}}}
