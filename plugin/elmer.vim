@@ -22,7 +22,7 @@ function! ElmerFortranRegion(type)
 	let decor='!-------------------------------------------------------------------'
 	
 	let lines=Add_with_lnum(lines, decor)
-	if type=='MODULE'
+	if a:type=='MODULE'
 	  let lines=Add_with_lnum(lines, " ".a:type." ".name)
 	else
 	  let lines=Add_with_lnum(lines, " ".a:type." ".name."()")
