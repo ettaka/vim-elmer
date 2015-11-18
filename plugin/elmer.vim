@@ -9,6 +9,13 @@ augroup filetype_fortran
 	autocmd FileType fortran set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 augroup END
 " }}}
+" Elmer Sif file settings ---------- {{{
+augroup filetype_sif
+  autocmd!
+	autocmd FileType sif set foldmethod=syntax
+  autocmd FileType sif nnoremap <buffer> <localleader>c 0i!<esc>
+augroup END
+" }}}
 " Fortran templates ------------- {{{
 function! Add_with_lnum(lines, line)
 	let new_lines=a:lines
