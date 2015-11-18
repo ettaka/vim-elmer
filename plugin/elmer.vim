@@ -1,8 +1,8 @@
-" Fortran file settings ---------- {{{
+" Forptran file settings ---------- {{{
 augroup filetype_fortran
   autocmd!
 	autocmd FileType fortran set foldmethod=syntax
-  autocmd FileType fortran nnoremap <buffer> <localleader>c 0i!<esc>
+  autocmd FileType fortran nnoremap <buffer> <localleader>c 0i!j<esc>
   autocmd FileType fortran nnoremap <buffer> <localleader>wf :execute(":call ElmerFortranRegion('FUNCTION')")<cr>7kf(a
   autocmd FileType fortran nnoremap <buffer> <localleader>ws :execute(":call ElmerFortranRegion('SUBROUTINE')")<cr>7kf(a
   autocmd FileType fortran nnoremap <buffer> <localleader>wm :execute(":call ElmerFortranRegion('MODULE')")<cr>4ka
@@ -13,7 +13,7 @@ augroup END
 augroup filetype_sif
   autocmd!
 	autocmd FileType sif set foldmethod=syntax
-  autocmd FileType sif nnoremap <buffer> <localleader>c 0i!<esc>
+  autocmd FileType sif nnoremap <buffer> <localleader>c 0i!j<esc>
 augroup END
 " }}}
 " Fortran templates ------------- {{{
