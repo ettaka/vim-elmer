@@ -104,6 +104,8 @@ syntax match sifComment "\v!.*$"
 " ----------------}}}
 " Match Lists ---------------------------------------------{{{
 let test_lists=[]
+
+call AddToSet(test_lists, 'initial condition')
 call AddToSet(test_lists, 'boundary condition')
 call AddToSet(test_lists, 'simulation')
 call AddToSet(test_lists, 'header')
