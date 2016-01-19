@@ -52,7 +52,7 @@ endfunction
 
 function! ToggleEmpyLines()
 	let a:cursor_pos=line(".")
-	let g:EmptyLines = get(g:, 'EmptyLines', 1)
+	let g:EmptyLines = get(g:, 'EmptyLines', 0)
   if g:EmptyLines==0
  		execute ":g/^$/d"
  		let g:EmptyLines = 1
