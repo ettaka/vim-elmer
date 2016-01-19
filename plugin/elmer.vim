@@ -14,6 +14,7 @@ augroup filetype_sif
   autocmd!
 	autocmd FileType sif set foldmethod=syntax
   autocmd FileType sif nnoremap <buffer> <localleader>c 0i!<esc>j
+  autocmd FileType sif nnoremap <leader>e :execute ":g/^$/d"<cr>
 augroup END
 " }}}
 " Fortran templates ------------- {{{
