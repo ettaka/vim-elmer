@@ -14,7 +14,7 @@ augroup filetype_sif
   autocmd!
 	autocmd FileType sif set foldmethod=syntax
   autocmd FileType sif nnoremap <buffer> <localleader>c 0i!<esc>j
-  autocmd FileType sif nnoremap <leader>e :execute ":g/^$/d"<cr>
+  autocmd FileType sif nnoremap <localleader>e :call ToggleEmpyLines()<cr>
 augroup END
 " }}}
 " Fortran templates ------------- {{{
@@ -50,3 +50,15 @@ function! ElmerFortranRegion(type)
 endfunction
 " ------------}}}
 
+function! ToggleEmpyLines()
+	let a:cursor_pos=line(".")
+	let g:EmptyLines = get(g:, 'EmptyLines', 1)
+  if g:EmptyLines==0
+ 		execute ":g/^$/d"
+ 		let g:EmptyLines = 1
+ 	else
+ 		execute ":%s/End/End\r"
+ 		let g:EmptyLines = 0
+ 	endif
+	:call setpos(".", [0, a:cursor_pos, 1,0])
+endfunction
