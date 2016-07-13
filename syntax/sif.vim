@@ -94,6 +94,8 @@ syntax match sifBoolean "\cfalse"
 
 syntax match sifOperator "="
 syntax region sifString start=/\v"/ skip=/\v\\./ end=/\v"/
+syntax region sifSpline start=/\creal cubic/ skip=/\v\\./ end=/\cend/ fold contains=sifKeyword,sifFloat,sifFloatIll,sifNumber
+
 " -------------------------------------------------------}}}
 " Match Operators-----------------------------{{{
 syntax match sifOperator "\(=\|-\|+\)"
@@ -116,7 +118,7 @@ call AddToSet(test_lists, 'material')
 call AddToSet(test_lists, 'body')
 call AddToSet(test_lists, 'component')
 for test_list in test_lists
-	let cmd="syntax region sifListBlock matchgroup=sifLB start='\\c". test_list . "' end='\\c\\(::\\|End\\)' fold contains=sifKeyword,sifString,sifNumber,sifType,sifFloat,sifFloatIll,sifOperator,sifBoolean,sifComment"
+	let cmd="syntax region sifListBlock matchgroup=sifLB start='\\c". test_list . "' end='\\c\\(::\\|End\\)' fold contains=sifKeyword,sifString,sifNumber,sifType,sifFloat,sifFloatIll,sifOperator,sifBoolean,sifComment,sifSpline"
 	execute(cmd)
 endfor
 " -----------------------------------------------------}}}
@@ -132,6 +134,7 @@ highlight link sifFloat Float
 highlight link sifFloatIll Float
 highlight link sifOperator Operator
 highlight link sifBoolean Boolean
+highlight link sifSpline Structure
 " }}}
 
 let b:current_syntax = "sif"
