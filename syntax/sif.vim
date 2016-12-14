@@ -89,12 +89,14 @@ syn match sifFloatIll	display	"\c\<\d\+\.\d\+\([dq][-+]\=\d\+\)\=\(_\a\w*\)\=\>"
 " floating point number
 syn match sifFloat	display	"\c\<\d\+\.\d\+\(e[-+]\=\d\+\)\=\(_\a\w*\)\=\>"
 
+
 syntax match sifBoolean "\ctrue"
 syntax match sifBoolean "\cfalse"
 
 syntax match sifOperator "="
 syntax region sifString start=/\v"/ skip=/\v\\./ end=/\v"/
 syntax region sifSpline start=/\creal cubic/ skip=/\v\\./ end=/\cend/ fold contains=sifKeyword,sifFloat,sifFloatIll,sifNumber
+syn region sifInlineMATC start="\$" end="$\|\$" contains=sifFloat,sifFloatIll,sifNumber,sifString,sifOperator
 
 " -------------------------------------------------------}}}
 " Match Operators-----------------------------{{{
