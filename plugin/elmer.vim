@@ -15,6 +15,7 @@ augroup filetype_sif
 	autocmd FileType sif set foldmethod=syntax
   autocmd FileType sif nnoremap <buffer> <localleader>c 0i!<esc>j
   autocmd FileType sif nnoremap <localleader>e :call ToggleEmpyLines()<cr>
+  autocmd FileType sif nnoremap <localleader><CR> :call TermElmer()<CR>"api<CR><C-\><C-n>Giexit
 augroup END
 " }}}
 " Fortran templates ------------- {{{
@@ -61,4 +62,8 @@ function! ToggleEmpyLines()
  		let g:EmptyLines = 0
  	endif
 	:call setpos(".", [0, a:cursor_pos, 1,0])
+endfunction
+function! TermElmer()
+	let @a="cd ".expand('%:p:h').";cd ..;ElmerSolver ".expand('%:t')
+	exec "split" | terminal 
 endfunction
