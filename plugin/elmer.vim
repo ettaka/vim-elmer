@@ -64,6 +64,6 @@ function! ToggleEmpyLines()
 	:call setpos(".", [0, a:cursor_pos, 1,0])
 endfunction
 function! TermElmer()
-	let @a="cd ".expand('%:p:h').";cd ..;ElmerSolver ".expand('%:t')
+	let @a="cd ".expand('%:p:h').";cd ..;ElmerSolver sif/".expand('%:t')
 	exec "split" | terminal 
 endfunction
